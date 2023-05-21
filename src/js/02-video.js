@@ -17,8 +17,13 @@ function setPlaybackTime({ seconds }) {
   localStorage.setItem(STORAGE_KEY, seconds);
 }
 
+let playbackTime;
 // Отримання часу відтворення
-const playbackTime = localStorage.getItem(STORAGE_KEY);
+if (localStorage.length) {
+  playbackTime = localStorage.getItem(STORAGE_KEY);
+} else {
+  playbackTime = 0;
+}
 
 // відновлення відтворення зі збереженої позиції після перезавантаження сторінки
 player.setCurrentTime(playbackTime);
